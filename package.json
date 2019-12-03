@@ -149,7 +149,7 @@
   "bugs": {
     "url": "https://github.com/Kostandy/image-dash/issues"
   },
-  "homepage": "https://github.com/Kostandy/image-dash#readme",
+  "homepage": "./",
   "keywords": [],
   "proxy": "https://api.unsplash.com"
 }
