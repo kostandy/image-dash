@@ -1,30 +1,43 @@
-import React, { useState, useEffect } from 'react';
-import axios from 'axios';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 
 import Grid from '../shared/Grid';
+import fetchImageList from './actions';
 
-const GridView = () => { // TODO: 1) see list of all images in a gridview
-  const initState = {
-    isLoading: false,
-  };
-  // eslint-disable-next-line no-unused-vars
-  const [state, setState] = useState(initState);
+import './index.css';
 
+const GridView = ({ fetchImages, images, isLoading }) => {
   useEffect(() => {
-    // TODO: Fetch images with axios
-    axios.get('https://unsplash.com/photos/random');
+    const params = {
+      per_page: 15,
+    };
+    fetchImages(params);
     return () => {};
   }, []);
 
   return (
-    <main>
-
+    <main className="main">
       <h2>Image grid</h2>
 
-      { state.isLoading ? 'Loading...' : <Grid /> }
-
+      { isLoading ? 'Loading...' : <Grid isLoading={isLoading} images={images} /> }
     </main>
   );
 };
 
-export default GridView;
+GridView.propTypes = {
+  fetchImages: PropTypes.func.isRequired,
+  images: PropTypes.array.isRequired,
+  isLoading: PropTypes.bool.isRequired,
+};
+
+const mapStateToProps = ({ gridView }) => ({
+  images: gridView.images,
+  isLoading: gridView.isLoading,
+});
+
+const mapDispatchToProps = (dispatch) => ({
+  fetchImages: (params) => dispatch(fetchImageList(params)),
+});
+
+export default connect(mapStateToProps, mapDispatchToProps)(GridView);

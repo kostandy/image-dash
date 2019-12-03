@@ -4,7 +4,13 @@ import {
   IMAGE_LIST_FAILURE,
 } from './actionTypes';
 
-const gridViewReducer = (state = {}, {
+const initialState = {
+  isLoading: false,
+  images: [],
+  error: undefined,
+};
+
+const gridViewReducer = (state = initialState, {
   type, data, error,
 }) => {
   switch (type) {

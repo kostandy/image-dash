@@ -1,5 +1,6 @@
 import axios from 'axios';
 
-const getImages = (params) => axios.get('https://unsplash.com/photos/random', params);
+// https://unsplash.com/documentation#list-photos
+const getImages = (params) => axios.get('/photos', { params });
 
 export default getImages;

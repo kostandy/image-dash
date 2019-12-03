@@ -1,8 +1,12 @@
 import React from 'react';
 
+import './index.css';
+
 const Header = () => (
   <header className="header">
-    <h1>Image dash</h1>
+    <div className="container">
+      <strong className="caption">Image dash</strong>
+    </div>
   </header>
 );
 
