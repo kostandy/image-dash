@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import Grid from '../shared/Grid';
 import fetchImageList from './actions';
 
-import './index.css';
+import './index.scss';
 
 const GridView = ({ fetchImages, images, isLoading }) => {
   useEffect(() => {
@@ -18,9 +18,7 @@ const GridView = ({ fetchImages, images, isLoading }) => {
 
   return (
     <main className="main">
-      <h2>Image grid</h2>
-
-      { isLoading ? 'Loading...' : <Grid isLoading={isLoading} images={images} /> }
+      <Grid isLoading={isLoading} images={images} />
     </main>
   );
 };

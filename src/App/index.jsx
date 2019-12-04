@@ -5,7 +5,7 @@ import store from '../store';
 
 import Header from '../shared/Header';
 
-import './index.css';
+import './index.scss';
 import GridView from '../GridView';
 
 const App = () => (

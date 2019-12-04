@@ -5,15 +5,15 @@
   background: #fff;
   box-shadow: 0 0.0625em 0.5em rgba(0, 0, 0, 0.3);
   z-index: 1;
-}
 
-.header .container {
-  max-width: 80%;
-  margin: 0 auto;
-  padding: 1em 0;
-}
+  .container {
+    max-width: 80%;
+    margin: 0 auto;
+    padding: 1em 0;
+  }
 
-.header .caption {
-  font-size: 1.5em;
-  font-weight: bold;
+  .caption {
+    font-size: 1.5em;
+    font-weight: bold;
+  }
 }

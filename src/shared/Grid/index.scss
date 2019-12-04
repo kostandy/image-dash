@@ -1,0 +1,46 @@
+.grid {
+  margin: 0 auto;
+  column-gap: 1em;
+
+  @media only screen and (min-width: 1024px) {
+    column-count: 4;
+  }
+
+  @media only screen and (max-width: 1023px) and (min-width: 768px) {
+    column-count: 3;
+  }
+
+  @media only screen and (max-width: 767px) and (min-width: 540px) {
+    column-count: 2;
+  }
+}
+
+.grid__figure {
+  position: relative;
+  background: #fff;
+  margin: 0 0 1em;
+
+  @media only screen and (max-width: 768px) {
+    .tooltip {
+      opacity: 1;
+    }
+  }
+
+  &:hover .tooltip {
+    opacity: 1;
+    transition: opacity .3s;
+  }
+
+  &:hover .grid__image {
+    filter: none;
+    transition: filter .3s;
+  }
+
+  .grid__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    filter: brightness(80%);
+    transition: filter .3s;
+  }
+}

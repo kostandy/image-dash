@@ -1,17 +1,44 @@
-import React from 'react';
+/* eslint-disable */
+import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 
-import './index.css';
+import Tooltip from '../Tooltip';
+import Modal from '../Modal';
 
-const Grid = ({ isLoading, images }) => (
-  <div className="grid">
-    {!isLoading && images && images.map((image) => (
-      <figure className="grid__figure" key={image.id}>
-        <img src={image.urls.small} alt={image.description} className="grid__image" loading="lazy" />
-      </figure>
-    ))}
-  </div>
-);
+import './index.scss';
+
+const Grid = ({ isLoading, images }) => {
+  const [selectedImage, setSelectedImage] = useState(null);
+
+  return (
+    <>
+      <div className="grid">
+        { isLoading && 'Loading...' }
+        {!isLoading && images && images.map((image) => (
+          <figure
+            className="grid__figure figure"
+            key={image.id}
+          >
+            <a
+              href="#modal"
+              onClick={() => setSelectedImage(image)}
+            >
+              <img
+                src={image.urls.small}
+                alt={image.description || ''}
+                title={image.description}
+                className="grid__image"
+                loading="lazy"
+              />
+            </a>
+            <Tooltip title={image.description} />
+          </figure>
+        ))}
+      </div>
+      {selectedImage && <Modal selectedImage={selectedImage} />}
+    </>
+  );
+};
 
 Grid.propTypes = {
   images: PropTypes.array.isRequired,
