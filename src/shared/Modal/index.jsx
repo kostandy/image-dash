@@ -31,7 +31,7 @@ const Modal = ({ selectedImage: image }) => {
           hidden={isImageLoading}
         />
         <div className="content">
-          <a className="cancel" href="#_" />
+          <a className="close" href="#_">╳</a>
           <p>{image.description || 'No description'}</p>
           <p>
             <b>Author:</b>
