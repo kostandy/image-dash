@@ -3,11 +3,16 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import Grid from '../shared/Grid';
-import fetchImageList from './actions';
+import {
+  fetchImagesAction,
+  removeImageAction,
+} from './actions';
 
 import './index.scss';
 
-const GridView = ({ fetchImages, images, isLoading }) => {
+const GridView = ({
+  fetchImages, images, isLoading, removeImage,
+}) => {
   useEffect(() => {
     const params = {
       per_page: 15,
@@ -18,13 +23,14 @@ const GridView = ({ fetchImages, images, isLoading }) => {
 
   return (
     <main className="main">
-      <Grid isLoading={isLoading} images={images} />
+      <Grid isLoading={isLoading} images={images} removeImage={removeImage} />
     </main>
   );
 };
 
 GridView.propTypes = {
   fetchImages: PropTypes.func.isRequired,
+  removeImage: PropTypes.func.isRequired,
   images: PropTypes.array.isRequired,
   isLoading: PropTypes.bool.isRequired,
 };
@@ -35,7 +41,8 @@ const mapStateToProps = ({ gridView }) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  fetchImages: (params) => dispatch(fetchImageList(params)),
+  fetchImages: (params) => dispatch(fetchImagesAction(params)),
+  removeImage: (id) => dispatch(removeImageAction(id)),
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(GridView);

@@ -7,7 +7,7 @@ import Modal from '../Modal';
 
 import './index.scss';
 
-const Grid = ({ isLoading, images }) => {
+const Grid = ({ isLoading, images, removeImage }) => {
   const [selectedImage, setSelectedImage] = useState(null);
 
   return (
@@ -31,9 +31,10 @@ const Grid = ({ isLoading, images }) => {
                 loading="lazy"
               />
             </a>
-            <Tooltip title={image.description} />
+            <Tooltip title={image.description} onRemoveClick={() => removeImage(image.id)} />
           </figure>
         ))}
+        { images && !images.length && !isLoading && 'No images ;)'}
       </div>
       {selectedImage && <Modal selectedImage={selectedImage} />}
     </>
@@ -43,6 +44,7 @@ const Grid = ({ isLoading, images }) => {
 Grid.propTypes = {
   images: PropTypes.array.isRequired,
   isLoading: PropTypes.bool.isRequired,
+  removeImage: PropTypes.func.isRequired,
 };
 
 export default Grid;
