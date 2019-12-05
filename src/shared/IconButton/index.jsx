@@ -7,7 +7,7 @@ import './index.scss';
 
 const IconButton = ({ name, onClick }) => (
   <button type="button" onClick={onClick} className="icon-button">
-    <img src={name === 'remove' ? removeIconPath : ''} alt={name} />
+    <img src={name === 'remove' ? removeIconPath : ''} alt={name} width={30} height={30} />
   </button>
 );
 
